@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja Exemplo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fefefe;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff6b6b, #f06595);
+      color: white;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .produtos {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .produto {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .produto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .produto img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .produto-info {
+      padding: 1.2rem;
+    }
+
+    .produto-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .produto-info p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .whatsapp-fixo {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s;
+      z-index: 999;
+    }
+
+    .whatsapp-fixo:hover {
+      background: #20b458;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f1f1f1;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Nome da Loja</h1>
+    <p>Os melhores sabores direto até você</p>
+  </header>
+
+  <section class="produtos">
+    <div class="produto">
+      <img src="https://via.placeholder.com/400x200?text=Produto+1" alt="Produto 1">
+      <div class="produto-info">
+        <h3>Produto 1</h3>
+        <p>Descrição curta e atrativa do produto 1.</p>
+      </div>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/400x200?text=Produto+2" alt="Produto 2">
+      <div class="produto-info">
+        <h3>Produto 2</h3>
+        <p>Descrição curta e atrativa do produto 2.</p>
+      </div>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/400x200?text=Produto+3" alt="Produto 3">
+      <div class="produto-info">
+        <h3>Produto 3</h3>
+        <p>Descrição curta e atrativa do produto 3.</p>
+      </div>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/400x200?text=Produto+4" alt="Produto 4">
+      <div class="produto-info">
+        <h3>Produto 4</h3>
+        <p>Descrição curta e atrativa do produto 4.</p>
+      </div>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/400x200?text=Produto+4" alt="Produto 4">
+      <div class="produto-info">
+        <h3>Produto 4</h3>
+        <p>Descrição curta e atrativa do produto 4.</p>
+      </div>
+    </div>
+  </section>
+
+  <a class="whatsapp-fixo" href="https://wa.me/5581999999999" target="_blank">📞 Fale conosco</a>
+
+  <section style="padding: 2rem; background-color: #fff0f0;">
+  <h2 style="text-align: center;">Horário de Funcionamento</h2>
+  <p id="status-loja" style="text-align: center; font-size: 1.3rem; margin-bottom: 1rem;"></p>
+  <ul id="lista-horarios" style="max-width: 600px; margin: auto; font-size: 1.1rem; list-style: none; padding: 0;"></ul>
+</section>
+
+<script>
+  const horarios = {
+    "Domingo": [],
+    "Segunda-feira": [["07:00", "18:00"]],
+    "Terça-feira": [["07:00", "18:00"]],
+    "Quarta-feira": [["07:00", "18:00"]],
+    "Quinta-feira": [["07:00", "18:00"]],
+    "Sexta-feira": [["07:00", "18:00"]],
+    "Sábado": [["07:00", "14:00"]]
+  };
+
+  function converterParaMinutos(horaStr) {
+    const [h, m] = horaStr.split(":").map(Number);
+    return h * 60 + m;
+  }
+
+  function estaAbertoAgora() {
+    const agora = new Date();
+    const diaSemana = agora.getDay(); // 0 (domingo) a 6 (sábado)
+    const horaAgora = agora.getHours();
+    const minutoAgora = agora.getMinutes();
+    const minutosAgora = horaAgora * 60 + minutoAgora;
+
+    const nomesDias = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+    const hoje = nomesDias[diaSemana];
+    const turnos = horarios[hoje];
+
+    for (let [inicio, fim] of turnos) {
+      const minInicio = converterParaMinutos(inicio);
+      const minFim = converterParaMinutos(fim);
+      if (minutosAgora >= minInicio && minutosAgora <= minFim) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Mostrar status
+  const status = document.getElementById("status-loja");
+  if (estaAbertoAgora()) {
+    status.textContent = "🟢 Estamos abertos agora!";
+    status.style.color = "#27ae60";
+  } else {
+    status.textContent = "🔴 Fechado no momento.";
+    status.style.color = "#c0392b";
+  }
+
+  // Mostrar lista de horários dinamicamente
+  const lista = document.getElementById("lista-horarios");
+  for (const [dia, turnos] of Object.entries(horarios)) {
+    const item = document.createElement("li");
+    if (turnos.length === 0) {
+      item.innerHTML = `<strong>${dia}:</strong> Fechado`;
+    } else {
+      const texto = turnos.map(([ini, fim]) => `${ini} – ${fim}`).join(" e ");
+      item.innerHTML = `<strong>${dia}:</strong> ${texto}`;
+    }
+    lista.appendChild(item);
+  }
+</script>
+
+
+  <!-- Adicione essa parte ANTES do </footer> -->
+<section class="avaliacoes" style="padding: 3rem 2rem; background-color: #fafafa;">
+  <h2 style="text-align:center; margin-bottom: 2rem; font-size: 2rem;">Avaliações dos Clientes</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: auto;">
+    
+    <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 15px rgba(0,0,0,0.05); transition: transform 0.3s;">
+        <h3 style="margin-bottom: 0.5rem;">João da Silva</h3>
+        <div style="color: #f1c40f; font-size: 1.2rem; margin-bottom: 0.5rem;">★★★★★</div>
+        <p>"Melhor pão que já comi, atendimento rápido e simpático."</p>
+      </div>
+    </a>
+
+    <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 15px rgba(0,0,0,0.05); transition: transform 0.3s;">
+        <h3 style="margin-bottom: 0.5rem;">Maria Lopes</h3>
+        <div style="color: #f1c40f; font-size: 1.2rem; margin-bottom: 0.5rem;">★★★★☆</div>
+        <p>"Bolos deliciosos, só acho que poderiam ter mais sabores!"</p>
+      </div>
+    </a>
+
+    <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 15px rgba(0,0,0,0.05); transition: transform 0.3s;">
+        <h3 style="margin-bottom: 0.5rem;">Carlos Henrique</h3>
+        <div style="color: #f1c40f; font-size: 1.2rem; margin-bottom: 0.5rem;">★★★★★</div>
+        <p>"Ambiente limpo, tudo fresquinho e com ótimo preço!"</p>
+      </div>
+    </a>
+
+    
+
+
+  </div>
+</section>
+
+  <footer>
+    &copy; 2025 Nome da Loja. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
