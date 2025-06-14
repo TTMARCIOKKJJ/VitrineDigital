@@ -1,894 +1,346 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vitrine Digital - Seu Melhor Sabor Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../../images/ChatGPT Image 13 de jun. de 2025, 21_18_37.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Express - Cardápio Digital</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (Emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+
     <style>
-        /* Estilos globais e variáveis CSS para cores e sombras */
         :root {
-            --primary-color: #6a11cb; /* Roxo vibrante */
-            --secondary-color: #20e3b2; /* Verde água */
-            --accent-color: #fca311; /* Laranja dourado */
-            --text-dark: #333;
-            --text-light: #fefefe;
-            --bg-light: #fefefe;
-            --bg-medium: #f8f9fa;
-            --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            --hover-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            --bg-dark: #1f2937; /* gray-800 */
+            --bg-light: #f9fafb; /* gray-50 */
+            --primary: #d4af37; /* Ouro/Dourado - um pouco mais escuro */
+            --primary-hover: #e0c56c;
+            --text-dark: #e5e7eb; /* gray-200 */
+            --text-light: #111827; /* gray-900 */
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.7; /* Aumentado para melhor legibilidade */
-            scroll-behavior: smooth; /* Rolagem suave para âncoras */
-            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
-        }
-
-        /* Container principal para centralizar e limitar a largura */
-        .container-central {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px; /* Padding base para evitar que o conteúdo grude nas bordas */
-        }
-
-        /* --- Header / Navegação --- */
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--text-light);
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 2.5rem;
+        h1, h2, h3, .font-display {
+            font-family: 'Playfair Display', serif;
         }
-
-        .navbar .logo a {
-            color: var(--text-light);
-            font-size: 2rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.3s ease;
+        .product-card {
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             border: 1px solid #e5e7eb; /* gray-200 */
         }
-        .navbar .logo a:hover {
-            transform: scale(1.05);
-        }
-
-        .navbar .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .navbar .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
-            padding-bottom: 5px;
-            position: relative;
-        }
-
-        .navbar .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hero-content {
-            padding: 2rem 20px 4rem;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            font-weight: 700;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-content p {
-            font-size: 1.6rem;
-            opacity: 0.95;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .hero-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--text-dark);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        }
-
-        .hero-button:hover {
-            background-color: #e39200;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        /* --- Seções Gerais --- */
-        section {
-            padding: 5rem 0; /* Padding consistente para todas as seções */
-        }
-        section:nth-of-type(even) { /* Estilo para seções pares (background alternado) */
-            background-color: var(--bg-medium);
-        }
-        h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        /* --- Produtos --- */
-        .produtos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .produto {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .produto:hover {
+        .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--hover-shadow);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--primary);
         }
-
-        .produto img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
+        .unavailable-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(249, 250, 251, 0.8); display: flex;
+            justify-content: center; align-items: center;
+            border-radius: 0.75rem; pointer-events: none;
         }
-
-        .produto-info {
-            padding: 1.5rem;
+        .unavailable-text {
+            color: #4b5563; /* gray-600 */
+            padding: 0.5rem 1rem; border-radius: 9999px;
+            font-weight: 600; border: 2px solid #d1d5db;
         }
-
-        .produto-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
+        .category-btn {
+            transition: all 0.2s ease-in-out;
+            border: 2px solid transparent;
+        }
+        .category-btn.active {
+            background-color: var(--bg-dark);
             color: var(--text-dark);
-            font-weight: 600;
+            border-color: var(--primary);
         }
-
-        .produto-info p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-        .produto-info .preco {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0;
-            display: block;
-            text-align: right;
-        }
-
-        /* --- WhatsApp Fixo --- */
-        .whatsapp-fixo {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            color: white;
-            padding: 1.2rem 2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            transition: background 0.3s ease, transform 0.3s ease;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .whatsapp-fixo i {
-            font-size: 1.8rem;
-        }
-
-        .whatsapp-fixo:hover {
-            background: #1da851;
-            transform: scale(1.1);
-        }
-
-        /* --- Seção Sobre Nós --- */
-        .sobre-nos {
-            text-align: center;
-        }
-
-        .sobre-nos p {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 1.15rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- Seção Horário de Funcionamento --- */
-        .horario-funcionamento {
-            /* padding já definido em 'section' */
-        }
-
-        #status-loja {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-        #status-loja.aberto {
-            color: #27ae60;
-        }
-        #status-loja.fechado {
-            color: #c0392b;
-        }
-
-        #lista-horarios {
-            max-width: 600px;
-            margin: auto;
-            font-size: 1.1rem;
-            list-style: none;
-            padding: 0;
-            line-height: 2;
-            text-align: left;
-        }
-        #lista-horarios li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-        }
-        #lista-horarios li:last-child {
-            border-bottom: none;
-        }
-        #lista-horarios strong {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        /* --- Seção Avaliações --- */
-        .avaliacoes {
-            /* padding já definido em 'section' */
-        }
-
-        .avaliacoes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .avaliacoes-grid a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .avaliacao-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .avaliacao-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .avaliacao-card h3 {
-            margin-bottom: 0.6rem;
-            color: var(--text-dark);
-            font-size: 1.25rem;
-        }
-
-        .avaliacao-card .estrelas {
-            color: var(--accent-color);
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .avaliacao-card p {
-            font-size: 1.05rem;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #222;
-            color: rgba(255, 255, 255, 0.9);
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-top: 5rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 3rem;
-            max-width: 1100px;
-            margin: 0 auto 3rem auto;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 220px;
-            text-align: left;
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .footer-section p, .footer-section ul li {
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-section ul li i {
-            margin-right: 10px;
-            color: var(--secondary-color);
-        }
-
-        .social-icons a {
-            color: var(--text-light);
-            font-size: 2rem;
-            margin: 0 12px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: var(--accent-color);
-            transform: translateY(-5px);
-        }
-
-        .footer-bottom {
-            margin-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 1.5rem;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* ======================================= */
-        /* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
-        /* ======================================= */
-
-        /* Para telas muito grandes (desktops ultra-wide) - ajuste do container */
-        @media (min-width: 1400px) {
-            .container-central {
-                max-width: 1300px; /* Um pouco mais de largura para telas grandes */
-            }
-        }
-
-        /* Para telas de desktop menores e tablets (largura máxima de 992px) */
-        @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 3.2rem; /* Reduz tamanho do H1 */
-            }
-            .hero-content p {
-                font-size: 1.4rem; /* Reduz tamanho do parágrafo do hero */
-            }
-            h2 {
-                font-size: 2.5rem; /* Reduz tamanho dos títulos de seção */
-            }
-            section {
-                padding: 4rem 0; /* Ajusta padding das seções */
-            }
-            .produtos {
-                gap: 2rem; /* Reduz espaçamento entre produtos */
-            }
-            .avaliacao-card {
-                padding: 1.5rem; /* Ajusta padding dos cards de avaliação */
-            }
-            .footer-content {
-                gap: 2rem; /* Ajusta espaçamento do rodapé */
-            }
-        }
-
-        /* Para tablets na maioria das orientações e smartphones maiores (largura máxima de 768px) */
-        @media (max-width: 768px) {
-            /* Navbar se torna uma coluna */
-            .navbar {
-                flex-direction: column;
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
-                padding: 0 15px; /* Ajusta padding da navbar */
-            }
-            .navbar .logo a {
-                font-size: 1.7rem; /* Reduz tamanho do logo no mobile */
-            }
-            .navbar .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                width: 100%;
-            }
-            .navbar .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-
-            /* Hero Content ajustado */
-            .hero-content h1 {
-                font-size: 2.8rem; /* Mais redução para H1 */
-            }
-            .hero-content p {
-                font-size: 1.2rem; /* Mais redução para parágrafo do hero */
-            }
-            .hero-button {
-                padding: 1rem 2.5rem; /* Ajusta padding do botão do hero */
-            }
-
-            /* Layout de Produtos e Avaliações para coluna única */
-            .produtos, .avaliacoes-grid, .footer-content {
-                grid-template-columns: 1fr; /* Força uma única coluna para todos os grids */
-                gap: 1.5rem; /* Ajusta o espaçamento */
-            }
-            .produto, .avaliacao-card {
-                margin: 0 auto; /* Centraliza os cards */
-                max-width: 380px; /* Limita a largura máxima para não ficarem muito largos em telas médias */
-            }
-
-            /* Seções e Títulos */
-            section {
-                padding: 3rem 0; /* Reduz padding das seções */
-            }
-            h2 {
-                font-size: 2.2rem; /* Mais redução para H2 */
-                margin-bottom: 2rem;
-            }
-
-            /* Horário de Funcionamento */
-            #lista-horarios li {
-                flex-direction: column; /* Dia e horário empilhados */
-                align-items: center;
-                gap: 5px;
-            }
-            #lista-horarios {
-                text-align: center; /* Centraliza a lista de horários */
-            }
-
-            /* Rodapé */
-            .footer-section {
-                text-align: center; /* Centraliza o texto das seções do rodapé */
-            }
-            .footer-section ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center; /* Centraliza itens da lista */
-            }
-        }
-
-        /* Para smartphones menores (largura máxima de 480px) */
-        @media (max-width: 480px) {
-            .container-central {
-                padding: 0 15px; /* Reduz ainda mais o padding lateral */
-            }
-            header {
-                padding: 1.5rem 0;
-            }
-            .hero-content {
-                padding: 1.5rem 15px 3rem; /* Ajusta padding do hero */
-            }
-            .hero-content h1 {
-                font-size: 2.2rem; /* H1 menor para telas pequenas */
-                margin-bottom: 1rem;
-            }
-            .hero-content p {
-                font-size: 1rem; /* Parágrafo menor */
-                margin-bottom: 1.5rem;
-            }
-            .hero-button {
-                padding: 0.8rem 2rem; /* Botão menor */
-                font-size: 0.9rem;
-            }
-            h2 {
-                font-size: 1.8rem; /* H2 menor */
-                margin-bottom: 1.5rem;
-            }
-            section {
-                padding: 2.5rem 0; /* Padding das seções */
-            }
-
-            .produto-info h3 {
-                font-size: 1.2rem; /* Título do produto menor */
-            }
-            .produto-info p {
-                font-size: 0.9rem; /* Descrição do produto menor */
-            }
-            .produto-info .preco {
-                font-size: 1.5rem; /* Preço menor */
-                text-align: center; /* Centraliza preço em mobile */
-            }
-
-            .whatsapp-fixo {
-                padding: 0.8rem 1.2rem; /* Padding do botão WhatsApp */
-                font-size: 0.9rem;
-                bottom: 20px;
-                right: 20px;
-            }
-            .whatsapp-fixo i {
-                font-size: 1.4rem; /* Ícone WhatsApp menor */
-            }
-
-            #status-loja {
-                font-size: 1.2rem; /* Status do horário menor */
-            }
-            #lista-horarios {
-                font-size: 1rem; /* Lista de horários menor */
-                padding: 0 10px;
-            }
-
-            .avaliacao-card {
-                padding: 1rem; /* Cards de avaliação menores */
-            }
-            .avaliacao-card h3 {
-                font-size: 1.1rem;
-            }
-            .avaliacao-card .estrelas {
-                font-size: 1.3rem;
-            }
-            .avaliacao-card p {
-                font-size: 0.9rem;
-            }
-
-            footer {
-                padding: 3rem 1.5rem; /* Rodapé ajustado */
-                margin-top: 3rem;
-            }
-            .footer-content {
-                gap: 1.5rem;
-                margin-bottom: 2rem;
-            }
-            .social-icons a {
-                font-size: 1.5rem; /* Ícones sociais menores */
-                margin: 0 8px;
-            }
-        }
-
-        /* Extra small devices (less than 320px wide) - para garantir que tudo se encaixe */
-        @media (max-width: 320px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .hero-content p {
-                font-size: 0.85rem;
-            }
-            h2 {
-                font-size: 1.6rem;
-            }
-            .navbar .logo a {
-                font-size: 1.5rem;
-            }
-            .navbar .nav-links a {
-                font-size: 0.9rem;
-            }
-            .produto-info h3 {
-                font-size: 1.1rem;
-            }
-            .produto-info p {
-                font-size: 0.85rem;
-            }
-            .produto-info .preco {
-                font-size: 1.3rem;
-            }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .modal-content { animation: fadeIn 0.3s ease-out; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <a href="#">Vitrine Digital</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#produtos-secao">Produtos</a></li>
-                <li><a href="#sobre-secao">Sobre Nós</a></li>
-                <li><a href="#contato-secao">Contato</a></li>
-                <li><a href="https://wa.me/5581999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-            </ul>
-        </div>
-        <div class="hero-content">
-            <h1>Sabores Exclusivos, Entrega Rápida, Experiência Inesquecível.</h1>
-            <p>Descubra a qualidade e a paixão em cada item da Vitrine Digital.</p>
-            <a href="#produtos-secao" class="hero-button">Conheça Nossos Produtos</a>
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+            <h1 class="text-5xl sm:text-6xl text-gray-900 font-display">Gourmet Express</h1>
+            <p class="mt-3 text-lg text-gray-500">Uma seleção de sabores para o seu paladar.</p>
         </div>
     </header>
 
-    <section id="produtos-secao" class="produtos container-central">
-        <h2>Nossos Produtos em Destaque</h2>
-        <div class="produto">
-            <img src="https://placehold.co/400x220/ffb3ba/ffffff?text=Pão+Artesanal" alt="Pão Artesanal Fresquinho e Crocante" onerror="this.onerror=null; this.src='https://placehold.co/400x220/cccccc/333333?text=Imagem+indisponível';">
-            <div class="produto-info">
-                <h3>Pão Artesanal Fresquinho</h3>
-                <p>Feito diariamente com fermentação natural e ingredientes selecionados, perfeito para o seu café da manhã.</p>
-                <span class="preco">R$ 15,90</span>
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Info da Loja e Status -->
+        <section class="bg-white p-6 rounded-xl shadow-sm mb-12 flex flex-col sm:flex-row justify-between items-center">
+            <div class="text-center sm:text-left mb-4 sm:mb-0 text-gray-600">
+                <p>📍 Av. Principal, 123 - Centro</p>
+                <p>🕒 <span id="horario-texto"></span></p>
             </div>
-        </div>
-        <div class="produto">
-            <img src="https://placehold.co/400x220/c7f0ff/ffffff?text=Bolos+Caseiros" alt="Variedade de Bolos Caseiros Deliciosos" onerror="this.onerror=null; this.src='https://placehold.co/400x220/cccccc/333333?text=Imagem+indisponível';">
-            <div class="produto-info">
-                <h3>Bolos Caseiros Deliciosos</h3>
-                <p>Nossos bolos trazem o sabor da casa da vovó, ideais para acompanhar seu café ou chá da tarde.</p>
-                <span class="preco">R$ 35,00</span>
+            <div id="store-status" class="px-4 py-2 text-base font-semibold rounded-full flex items-center gap-2">
+                <!-- Status (Aberto/Fechado) aqui -->
             </div>
-        </div>
-        <div class="produto">
-            <img src="https://placehold.co/400x220/a3e4d7/ffffff?text=Doces+Finos" alt="Doces Finos e Elegantes Variados" onerror="this.onerror=null; this.src='https://placehold.co/400x220/cccccc/333333?text=Imagem+indisponível';">
-            <div class="produto-info">
-                <h3>Doces Finos Variados</h3>
-                <p>Pequenas obras de arte açucaradas, perfeitas para eventos especiais ou um mimo diário.</p>
-                <span class="preco">R$ 7,50 (cada)</span>
+        </section>
+        
+        <!-- Seção de Categorias -->
+        <section id="category-section" class="mb-8">
+            <h2 class="text-3xl font-display text-gray-800 mb-4">Categorias</h2>
+            <div id="category-filters" class="flex flex-wrap gap-3">
+                <!-- Botões de categoria serão inseridos aqui -->
             </div>
-        </div>
-        <div class="produto">
-            <img src="https://placehold.co/400x220/ffe4e1/ffffff?text=Salgados+Assados" alt="Salgados Assados Crocantes e Recheados" onerror="this.onerror=null; this.src='https://placehold.co/400x220/cccccc/333333?text=Imagem+indisponível';">
-            <div class="produto-info">
-                <h3>Salgados Assados Crocantes</h3>
-                <p>Opções leves e saborosas para seu lanche ou festa, feitos com recheios generosos.</p>
-                <span class="preco">R$ 8,90 (unidade)</span>
+        </section>
+
+        <!-- Seção de Produtos -->
+        <section id="products-section">
+            <div id="product-list" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Produtos serão inseridos aqui -->
             </div>
-        </div>
-        <div class="produto">
-            <img src="https://placehold.co/400x220/d7ecff/ffffff?text=Tortas+Geladas" alt="Tortas Geladas Cremosas e Refrescantes" onerror="this.onerror=null; this.src='https://placehold.co/400x220/cccccc/333333?text=Imagem+indisponível';">
-            <div class="produto-info">
-                <h3>Tortas Geladas Cremosas</h3>
-                <p>Refrescantes e irresistíveis, nossas tortas geladas são a sobremesa perfeita para qualquer ocasião.</p>
-                <span class="preco">R$ 55,00</span>
-            </div>
-        </div>
-        <div class="produto">
-            <img src="https://placehold.co/400x220/ffedcc/ffffff?text=Cestas+Café" alt="Cestas de Café da Manhã Completas e Personalizadas" onerror="this.onerror=null; this.src='https://placehold.co/400x220/cccccc/333333?text=Imagem+indisponível';">
-            <div class="produto-info">
-                <h3>Cestas de Café da Manhã</h3>
-                <p>Surpreenda quem você ama com uma cesta recheada de pães, bolos, frutas e delícias da nossa loja.</p>
-                <span class="preco">R$ 180,00</span>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <a class="whatsapp-fixo" href="https://wa.me/000000000" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
-        <i class="fab fa-whatsapp"></i> Fale conosco
-    </a>
-
-    <!-- Seção: Sobre Nós -->
-    <section id="sobre-secao" class="sobre-nos">
-        <div class="container-central">
-            <h2>Nossa História e Compromisso</h2>
-            <p>
-                Na Vitrine Digital, cada produto é feito com carinho e dedicação para levar o melhor da culinária artesanal até você. Fundada em 2025 com a paixão por sabores autênticos, nossa missão é ser a ponte entre o produtor e a sua mesa, garantindo frescor e qualidade em cada entrega.
-            </p>
-            <p>
-                Valorizamos a tradição e a inovação, buscando constantemente aprimorar nossos produtos e serviços para oferecer uma experiência de compra única e memorável. Conte conosco para tornar seus momentos ainda mais deliciosos!
-            </p>
-        </div>
-    </section>
-
-    <!-- Seção de Horário de Funcionamento -->
-    <section class="horario-funcionamento">
-        <div class="container-central">
-            <h2>Horário de Funcionamento</h2>
-            <p id="status-loja"></p>
-            <ul id="lista-horarios"></ul>
-        </div>
-    </section>
-
-    <script>
-        // Script para Horário de Funcionamento
-        const horarios = {
-            "Domingo": [],
-            "Segunda-feira": [["07:00", "18:00"]],
-            "Terça-feira": [["07:00", "18:00"]],
-            "Quarta-feira": [["07:00", "18:00"]],
-            "Quinta-feira": [["07:00", "18:00"]],
-            "Sexta-feira": [["07:00", "18:00"]],
-            "Sábado": [["07:00", "14:00"]]
-        };
-
-        function converterParaMinutos(horaStr) {
-            const [h, m] = horaStr.split(":").map(Number);
-            return h * 60 + m;
-        }
-
-        function estaAbertoAgora() {
-            const agora = new Date();
-            const diaSemana = agora.getDay(); // 0 (domingo) a 6 (sábado)
-            const horaAgora = agora.getHours();
-            const minutoAgora = agora.getMinutes();
-            const minutosAgora = horaAgora * 60 + minutoAgora;
-
-            const nomesDias = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
-            const hoje = nomesDias[diaSemana];
-            const turnos = horarios[hoje];
-
-            for (let [inicio, fim] of turnos) {
-                const minInicio = converterParaMinutos(inicio);
-                const minFim = converterParaMinutos(fim);
-                if (minutosAgora >= minInicio && minutosAgora <= minFim) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // Mostrar status
-        const status = document.getElementById("status-loja");
-        if (estaAbertoAgora()) {
-            status.textContent = "🟢 Estamos abertos agora!";
-            status.classList.add("aberto");
-            status.classList.remove("fechado");
-        } else {
-            status.textContent = "🔴 Fechado no momento.";
-            status.classList.add("fechado");
-            status.classList.remove("aberto");
-        }
-
-        // Mostrar lista de horários dinamicamente
-        const lista = document.getElementById("lista-horarios");
-        for (const [dia, turnos] of Object.entries(horarios)) {
-            const item = document.createElement("li");
-            if (turnos.length === 0) {
-                item.innerHTML = `<strong>${dia}:</strong> <span>Fechado</span>`;
-            } else {
-                const texto = turnos.map(([ini, fim]) => `${ini} – ${fim}`).join(" e ");
-                item.innerHTML = `<strong>${dia}:</strong> <span>${texto}</span>`;
-            }
-            lista.appendChild(item);
-        }
-    </script>
-
-    <!-- Seção de Avaliações dos Clientes -->
-    <section class="avaliacoes">
-        <div class="container-central">
-            <h2>O Que Dizem Nossos Clientes</h2>
-            <div class="avaliacoes-grid">
-                <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" rel="noopener noreferrer">
-                    <div class="avaliacao-card">
-                        <h3>João da Silva</h3>
-                        <div class="estrelas">★★★★★</div>
-                        <p>"Melhor pão que já comi, atendimento rápido e simpático. A qualidade é surpreendente!"</p>
-                    </div>
-                </a>
-
-                <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" rel="noopener noreferrer">
-                    <div class="avaliacao-card">
-                        <h3>Maria Lopes</h3>
-                        <div class="estrelas">★★★★☆</div>
-                        <p>"Bolos deliciosos, sempre fresquinhos. Só acho que poderiam ter mais opções de sabores para escolher!"</p>
-                    </div>
-                </a>
-
-                <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" rel="noopener noreferrer">
-                    <div class="avaliacao-card">
-                        <h3>Carlos Henrique</h3>
-                        <div class="estrelas">★★★★★</div>
-                        <p>"Ambiente limpo, tudo fresquinho e com ótimo preço! O atendimento é impecável, super recomendo a Vitrine Digital."</p>
-                    </div>
-                </a>
-
-                <a href="https://maps.app.goo.gl/db9h2wYiva5BDCxd6" target="_blank" rel="noopener noreferrer">
-                    <div class="avaliacao-card">
-                        <h3>Ana Clara</h3>
-                        <div class="estrelas">★★★★★</div>
-                        <p>"A Vitrine Digital é minha parada obrigatória! Produtos incríveis e sempre frescos, a entrega é super pontual."</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé Aprimorado -->
-    <footer id="contato-secao">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Vitrine Digital</h3>
-                <p>Sua loja de confiança para os melhores produtos e serviços online, com sabor e qualidade.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123 - Centro, Cidade - Estado, CEP 12345-678</li>
-                    <li><i class="fas fa-phone-alt"></i> <a href="tel:+5581999999999">(81) 99999-9999</a></li>
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:contato@vitrinedigital.com">contato@vitrinedigital.com</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Links Úteis</h3>
-                <ul>
-                    <li><a href="#sobre-secao">Sobre Nós</a></li>
-                    <li><a href="#produtos-secao">Nossos Produtos</a></li>
-                    <li><a href="#avaliacoes-secao">Avaliações</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Termos de Serviço</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Siga-nos</h3>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/sua_loja/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Loja"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/sua_loja/" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Loja"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/5581999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Loja"><i class="fab fa-whatsapp"></i></a>
+    <!-- Botão Flutuante do Carrinho -->
+    <button id="cart-button" class="fixed bottom-6 right-6 bg-gray-900 text-white p-4 rounded-full shadow-2xl transition transform hover:scale-110 focus:outline-none ring-4 ring-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">0</span>
+    </button>
+    
+    <!-- Modal do Carrinho -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-lg p-6 relative modal-content">
+            <button id="close-cart-modal" class="absolute top-3 right-4 text-gray-400 hover:text-gray-800 text-3xl font-light">&times;</button>
+            <h2 class="text-3xl font-display text-gray-900 mb-6">Sua Sacola</h2>
+            <div id="cart-items" class="max-h-60 overflow-y-auto mb-4 pr-2"></div>
+            
+            <!-- Opções de Entrega -->
+            <div id="delivery-options" class="my-6">
+                <h3 class="font-semibold text-lg mb-3 text-gray-800">Opção de Entrega</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer has-[:checked]:bg-gray-100 has-[:checked]:border-gray-900">
+                        <input type="radio" name="delivery" value="pickup" class="h-5 w-5 text-gray-900 focus:ring-gray-900" checked>
+                        <span class="ml-3 text-gray-700">Retirar no Local</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer has-[:checked]:bg-gray-100 has-[:checked]:border-gray-900">
+                        <input type="radio" name="delivery" value="delivery" class="h-5 w-5 text-gray-900 focus:ring-gray-900">
+                        <span class="ml-3 text-gray-700">Entrega</span>
+                    </label>
+                </div>
+                <div id="address-input-container" class="hidden mt-4">
+                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Seu Endereço:</label>
+                    <input type="text" id="address" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-gray-900 focus:border-gray-900" placeholder="Ex: Rua das Flores, 123, Bairro">
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2025 Vitrine Digital. Todos os direitos reservados.
-        </div>
-    </footer>
 
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center font-semibold text-xl mb-6 text-gray-900">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 0,00</span>
+                </div>
+                <button id="checkout-button" class="w-full bg-gray-900 text-white font-bold text-lg py-3 px-4 rounded-lg transition transform hover:scale-105 shadow-md hover:shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none">
+                    Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Alerta Customizado -->
+    <div id="alert-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-sm p-6 text-center modal-content">
+            <p id="alert-message" class="text-gray-800 mb-4"></p>
+            <button id="close-alert-modal" class="bg-gray-900 text-white font-bold py-2 px-6 rounded-lg">OK</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const storeConfig = {
+            phoneNumber: '5584991289821', 
+            name: 'Gourmet Express', 
+            openingHours: {
+                0: { open: '18:00', close: '22:00' }, 1: null, 2: { open: '18:00', close: '23:00' },
+                3: { open: '18:00', close: '23:00' }, 4: { open: '18:00', close: '23:00' },
+                5: { open: '18:00', close: '23:59' }, 6: { open: '18:00', close: '23:59' },
+            },
+            categories: [
+                { id: 'all', name: 'Todos' },
+                { id: 'lanches', name: 'Lanches' },
+                { id: 'porcoes', name: 'Porções' },
+                { id: 'bebidas', name: 'Bebidas' }
+            ],
+            products: [
+                { id: 1, category: 'bebidas', name: 'Refrigerante Artesanal', price: 9.00, description: 'Feito na casa com gengibre e especiarias.', image: 'https://placehold.co/400x400/1f2937/e5e7eb?text=Bebida', available: true, discount: 10 },
+                { id: 2, category: 'lanches', name: 'Burger Clássico', price: 28.50, description: 'Pão brioche, 150g de blend bovino e queijo.', image: 'https://placehold.co/400x400/b45309/ffffff?text=Burger', available: true, discount: 0 },
+                { id: 3, category: 'bebidas', name: 'Suco Natural de Laranja', price: 7.20, description: 'Espremido na hora, 100% fruta.', image: 'https://placehold.co/400x400/f59e0b/ffffff?text=Suco', available: true, discount: 0 },
+                { id: 4, category: 'lanches', name: 'Sanduíche de Frango Grelhado', price: 26.00, description: 'Frango marinado, pão ciabatta e salada fresca.', image: 'https://placehold.co/400x400/ca8a04/ffffff?text=Sanduíche', available: true, discount: 0 },
+                { id: 5, category: 'porcoes', name: 'Batatas Rústicas com Alecrim', price: 18.00, description: 'Temperadas com azeite, sal e alecrim fresco.', image: 'https://placehold.co/400x400/78350f/ffffff?text=Batatas', available: true, discount: 0 },
+                { id: 6, category: 'porcoes', name: 'Anéis de Cebola Crocantes', price: 16.50, description: 'Acompanha nosso molho especial da casa.', image: 'https://placehold.co/400x400/d97706/ffffff?text=Anéis', available: false, discount: 0 },
+                { id: 7, category: 'lanches', name: 'Molho Especial da Casa', price: 3.00, description: 'O segredo do nosso sabor, em porção extra.', image: 'https://placehold.co/400x400/fef3c7/451a03?text=Molho', available: true, discount: 5 },
+                { id: 8, category: 'bebidas', name: 'Água Mineral com Gás', price: 5.00, description: 'Hidratação com um toque de elegância.', image: 'https://placehold.co/400x400/60a5fa/ffffff?text=Água', available: true, discount: 0 },
+            ]
+        };
+        
+        let cart = [];
+        let currentCategory = 'all';
+        const productListEl = document.getElementById('product-list');
+        const cartButton = document.getElementById('cart-button');
+        const cartCountEl = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCartModalBtn = document.getElementById('close-cart-modal');
+        const cartItemsEl = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const checkoutButton = document.getElementById('checkout-button');
+        const categoryFiltersEl = document.getElementById('category-filters');
+        const addressInputContainer = document.getElementById('address-input-container');
+        const alertModal = document.getElementById('alert-modal');
+        const alertMessageEl = document.getElementById('alert-message');
+        const closeAlertModalBtn = document.getElementById('close-alert-modal');
+
+        function renderCategories() {
+            categoryFiltersEl.innerHTML = '';
+            storeConfig.categories.forEach(category => {
+                const isActive = category.id === currentCategory;
+                const button = document.createElement('button');
+                button.className = `category-btn font-semibold text-lg py-2 px-5 rounded-lg transition ${isActive ? 'active' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`;
+                button.textContent = category.name;
+                button.dataset.id = category.id;
+                button.addEventListener('click', () => { currentCategory = category.id; renderProducts(); renderCategories(); });
+                categoryFiltersEl.appendChild(button);
+            });
+        }
+
+        function renderProducts() {
+            productListEl.innerHTML = '';
+            const filteredProducts = currentCategory === 'all' ? storeConfig.products : storeConfig.products.filter(p => p.category === currentCategory);
+            const sortedProducts = filteredProducts.sort((a, b) => a.available ? -1 : 1);
+
+            if (sortedProducts.length === 0) { productListEl.innerHTML = `<p class="col-span-full text-center text-gray-500 py-10">Nenhum produto encontrado nesta categoria.</p>`; return; }
+
+            sortedProducts.forEach(product => {
+                const isAvailable = product.available;
+                const hasDiscount = product.discount > 0 && isAvailable;
+                const finalPrice = hasDiscount ? product.price * (1 - product.discount / 100) : product.price;
+                const priceHtml = hasDiscount ? `<div class="flex items-baseline gap-2 mt-2"><p class="text-xl font-bold text-gray-900">R$ ${finalPrice.toFixed(2).replace('.', ',')}</p><p class="text-base text-gray-400 line-through">R$ ${product.price.toFixed(2).replace('.', ',')}</p></div>` : `<p class="text-xl font-bold text-gray-800 mt-2">R$ ${product.price.toFixed(2).replace('.', ',')}</p>`;
+                const discountBadge = hasDiscount ? `<div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold py-1 px-2.5 rounded-full shadow-lg">-${product.discount}%</div>` : '';
+                const productCard = `<div class="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col relative product-card">${discountBadge}<img src="${product.image}" alt="${product.name}" class="w-full h-44 sm:h-52 object-cover"><div class="p-5 flex flex-col flex-grow"><h3 class="text-lg font-semibold text-gray-800">${product.name}</h3><p class="text-sm text-gray-500 mt-1 flex-grow">${product.description}</p><div class="mt-2">${priceHtml}</div><button data-id="${product.id}" class="add-to-cart-btn w-full bg-gray-900 text-white font-bold py-2.5 px-4 rounded-lg mt-4 transition hover:bg-black disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2" ${!isAvailable ? 'disabled' : ''}><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" /></svg>Adicionar</button></div>${!isAvailable ? '<div class="unavailable-overlay"><span class="unavailable-text">Indisponível</span></div>' : ''}</div>`;
+                productListEl.innerHTML += productCard;
+            });
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => button.addEventListener('click', (e) => addToCart(parseInt(e.currentTarget.dataset.id))));
+        }
+        
+        function addToCart(productId) {
+            const product = storeConfig.products.find(p => p.id === productId); if (!product || !product.available) return;
+            const finalPrice = product.discount > 0 ? product.price * (1 - product.discount / 100) : product.price;
+            const productInCart = cart.find(item => item.id === productId);
+            if (productInCart) { productInCart.quantity++; } else { cart.push({ ...product, price: finalPrice, quantity: 1 }); }
+            updateCart();
+        }
+
+        function decreaseQuantity(productId) {
+            const itemIndex = cart.findIndex(i => i.id === productId);
+            if (itemIndex > -1) { cart[itemIndex].quantity--; if (cart[itemIndex].quantity === 0) { cart.splice(itemIndex, 1); } updateCart(); }
+        }
+        
+        function increaseQuantity(productId) {
+            const item = cart.find(i => i.id === productId); if(item) { item.quantity++; updateCart(); }
+        }
+
+        function updateCart() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountEl.textContent = totalItems;
+            cartCountEl.classList.toggle('hidden', totalItems === 0);
+            checkoutButton.disabled = cart.length === 0;
+
+            cartItemsEl.innerHTML = cart.length === 0 ? '<p class="text-gray-500 text-center py-8">Sua sacola está vazia.</p>' : '';
+            cart.forEach(item => {
+                cartItemsEl.innerHTML += `<div class="flex justify-between items-center mb-4"><div class="flex items-center gap-4"><img src="${item.image}" class="w-16 h-16 rounded-md object-cover"><div class="flex-grow"><p class="font-semibold text-gray-800">${item.name}</p><p class="text-gray-600 font-bold">R$ ${(item.quantity * item.price).toFixed(2).replace('.', ',')}</p></div></div><div class="flex items-center gap-3"><button data-id="${item.id}" class="decrease-btn bg-gray-200 text-gray-700 w-7 h-7 rounded-full font-bold transition hover:bg-gray-300">-</button><span class="font-semibold w-4 text-center text-gray-800">${item.quantity}</span><button data-id="${item.id}" class="increase-btn bg-gray-200 text-gray-700 w-7 h-7 rounded-full font-bold transition hover:bg-gray-300">+</button></div></div>`;
+            });
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalEl.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        }
+        
+        function generateWhatsAppMessage() {
+            const deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+            const address = document.getElementById('address').value.trim();
+            
+            let message = `Olá, *${storeConfig.name}*! Gostaria de fazer o seguinte pedido:\n\n`;
+            cart.forEach(item => {
+                const subtotal = (item.quantity * item.price).toFixed(2).replace('.', ',');
+                message += `▪️ ${item.quantity}x ${item.name} - R$ ${subtotal}\n`;
+            });
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            message += '\n--------------------\n';
+            if (deliveryMethod === 'delivery') {
+                message += `*Opção:* Entrega\n`;
+                message += `*Endereço:* ${address}\n`;
+            } else {
+                message += `*Opção:* Retirar no Local\n`;
+            }
+
+            message += `\n*Valor Total: R$ ${totalPrice.toFixed(2).replace('.', ',')}*`;
+            return encodeURIComponent(message);
+        }
+
+        function checkStoreStatus() {
+            const now = new Date(); const dayOfWeek = now.getDay(); const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0'); const storeStatusEl = document.getElementById('store-status'); const horarioTextoEl = document.getElementById('horario-texto'); const todayHours = storeConfig.openingHours[dayOfWeek];
+            if (todayHours && currentTime >= todayHours.open && currentTime < todayHours.close) {
+                storeStatusEl.innerHTML = `<span class="h-2.5 w-2.5 rounded-full bg-green-500"></span><span>Aberto</span>`;
+                storeStatusEl.className = `px-4 py-2 text-base font-semibold rounded-full flex items-center gap-2 bg-green-100 text-green-800`;
+            } else {
+                storeStatusEl.innerHTML = `<span class="h-2.5 w-2.5 rounded-full bg-red-500"></span><span>Fechado</span>`;
+                storeStatusEl.className = `px-4 py-2 text-base font-semibold rounded-full flex items-center gap-2 bg-red-100 text-red-800`;
+            }
+            horarioTextoEl.textContent = todayHours ? `Hoje, das ${todayHours.open} às ${todayHours.close}` : `Fechado hoje`;
+        }
+        
+        function showCustomAlert(message) {
+            alertMessageEl.textContent = message;
+            alertModal.classList.remove('hidden');
+            alertModal.classList.add('flex');
+        }
+
+        cartButton.addEventListener('click', () => { cartModal.classList.remove('hidden'); cartModal.classList.add('flex'); });
+        closeCartModalBtn.addEventListener('click', () => { cartModal.classList.add('hidden'); cartModal.classList.remove('flex'); });
+        closeAlertModalBtn.addEventListener('click', () => { alertModal.classList.add('hidden'); alertModal.classList.remove('flex'); });
+        
+        document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'delivery') {
+                    addressInputContainer.classList.remove('hidden');
+                } else {
+                    addressInputContainer.classList.add('hidden');
+                }
+            });
+        });
+
+        checkoutButton.addEventListener('click', () => { 
+            const deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+            const address = document.getElementById('address').value.trim();
+
+            if (deliveryMethod === 'delivery' && address === '') {
+                showCustomAlert('Por favor, preencha o seu endereço para a entrega.');
+                return;
+            }
+
+            if (cart.length > 0) window.open(`https://wa.me/${storeConfig.phoneNumber}?text=${generateWhatsAppMessage()}`, '_blank'); 
+        });
+        
+        cartItemsEl.addEventListener('click', (e) => {
+            if (e.target.classList.contains('increase-btn')) { increaseQuantity(parseInt(e.target.dataset.id)); }
+            if (e.target.classList.contains('decrease-btn')) { decreaseQuantity(parseInt(e.target.dataset.id)); }
+        });
+
+        renderCategories();
+        renderProducts();
+        updateCart();
+        checkStoreStatus();
+        setInterval(checkStoreStatus, 60000);
+    });
+    </script>
 </body>
 </html>

@@ -2,106 +2,221 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Serviços Digitais</title>
-   <!-- Se tiver um PNG, você pode adicionar também -->
-    <link rel="icon" type="image/png" href="images/ChatGPT Image 13 de jun. de 2025, 21_18_37.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços Digitais Profissionais | Criação de Sites</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Favicon (Exemplo) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
   <style>
+    /* Estilo customizado para usar a fonte 'Inter' e adicionar um fallback */
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f7f7f7;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-
-    header {
-      background-color: #1e88e5;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-      background-color: white;
-      margin-top: -2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    section h2 {
-      text-align: center;
-      color: #333;
-    }
-
-    .beneficios {
-      margin-top: 1rem;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .beneficio {
-      background: #f1f1f1;
-      padding: 1rem;
-      border-radius: 8px;
-    }
-
-    .whatsapp {
-      display: block;
-      margin: 2rem auto 0;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      background-color: #25d366;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 8px;
-      width: fit-content;
-    }
-
-    .whatsapp:hover {
-      background-color: #1ebe5d;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
+    /* Sombra de texto sutil para melhor legibilidade no header */
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
   </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
-  <header>
-    <h1>Criação de Sites para Negócios</h1>
-    <p>Especialista em páginas para restaurantes, padarias, mercados e lojas</p>
+  <!-- Bloco do Header -->
+  <header class="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-8 sm:p-12 text-center overflow-hidden">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-shadow">Criação de Sites para Negócios</h1>
+      <p class="mt-3 text-lg md:text-xl text-blue-100 max-w-2xl mx-auto text-shadow">
+        Especialista em páginas de alta performance para restaurantes, padarias, mercados e lojas.
+      </p>
+    </div>
   </header>
 
-  <section>
-    <h2>O que eu posso fazer por você</h2>
-    <div class="beneficios">
-      <div class="beneficio">✅ Site leve e rápido</div>
-      <div class="beneficio">✅ Visual bonito e moderno</div>
-      <div class="beneficio">✅ Produtos com foto, preço e botão de WhatsApp</div>
-      <div class="beneficio">✅ Avaliações, localização e horário inteligente</div>
-      <div class="beneficio">✅ Página que funciona em celular, computador e tablet</div>
+  <!-- Container Principal -->
+  <main class="max-w-6xl mx-auto p-4 sm:p-10 mt-5" >
+    
+    <!-- Cartão de Conteúdo -->
+    <section class="bg-white rounded-xl shadow-2xl -mt-16 sm:-mt-20 p-6 sm:p-10">
+      
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">
+        O que eu posso fazer por você
+      </h2>
+      
+      <!-- Grid de Benefícios -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Benefício Item -->
+        <div class="bg-gray-50 p-5 rounded-lg flex items-center space-x-4 transition duration-300 hover:shadow-md hover:bg-white hover:scale-105">
+          <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 17-5-5 5-5"/><path d="m15 17-5-5 5-5"/><path d="M8 17.09V6.91a2 2 0 0 1 2.58-1.9L16 6.5v11l-5.42-1.49A2 2 0 0 1 8 17.09z"/></svg>
+          </div>
+          <p class="text-gray-700 font-medium">Site leve e ultra-rápido</p>
+        </div>
+
+        <!-- Benefício Item -->
+        <div class="bg-gray-50 p-5 rounded-lg flex items-center space-x-4 transition duration-300 hover:shadow-md hover:bg-white hover:scale-105">
+           <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <p class="text-gray-700 font-medium">Visual bonito e moderno</p>
+        </div>
+
+        <!-- Benefício Item -->
+        <div class="bg-gray-50 p-5 rounded-lg flex items-center space-x-4 transition duration-300 hover:shadow-md hover:bg-white hover:scale-105">
+           <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <p class="text-gray-700 font-medium">Produtos com foto, preço e botão de WhatsApp</p>
+        </div>
+
+        <!-- Benefício Item -->
+        <div class="bg-gray-50 p-5 rounded-lg flex items-center space-x-4 transition duration-300 hover:shadow-md hover:bg-white hover:scale-105">
+           <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <p class="text-gray-700 font-medium">Avaliações, localização e horário inteligente</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Planos -->
+    <section class="mt-12 mb-8 px-4">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Planos Flexíveis para seu Negócio</h2>
+        <p class="text-center text-gray-600 mb-10">Escolha o plano ideal e vamos começar.</p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            
+            <!-- Plano 1: Básico -->
+            <div class="plan-card border-2 border-gray-200 rounded-lg p-6 flex flex-col transition duration-300">
+                <h3 class="text-xl font-bold text-gray-800">Plano Essencial</h3>
+                <p class="text-gray-500 mt-1">Ideal para começar</p>
+                <p class="text-4xl font-extrabold text-gray-900 my-6">R$9.90</p>
+                <ul class="space-y-3 text-gray-600 mb-8 flex-grow">
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Página Única (One Page)</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Até 5 seções</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Botão de WhatsApp</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Design Responsivo</li>
+                </ul>
+                <button data-plan-name="Essencial" class="select-plan-btn w-full mt-auto bg-white border-2 border-blue-600 text-blue-600 font-bold py-3 px-6 rounded-lg transition duration-300 hover:bg-blue-600 hover:text-white">Selecionar Plano</button>
+            </div>
+
+            <!-- Plano 2: Profissional (Recomendado) -->
+            <div class="plan-card border-2 border-black rounded-lg p-6 flex flex-col transition duration-300 relative shadow-xl">
+                <span class="absolute top-0 right-4 -mt-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">MAIS POPULAR</span>
+                <h3 class="text-xl font-bold text-gray-800">Plano Profissional</h3>
+                <p class="text-gray-500 mt-1">Para negócios em crescimento</p>
+                <p class="text-4xl font-extrabold text-blue-600 my-6">R$ 29.90</p>
+                <ul class="space-y-3 text-gray-600 mb-8 flex-grow">
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Tudo do plano Essencial</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Catálogo de Produtos</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Integração com Google Maps</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Formulário de Contato</li>
+                </ul>
+                <button data-plan-name="Profissional" class="select-plan-btn w-full mt-auto bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 hover:bg-blue-700">Selecionar Plano</button>
+            </div>
+
+            <!-- Plano 3: Premium -->
+            <div class="plan-card border-2 border-gray-200 rounded-lg p-6 flex flex-col transition duration-300">
+                <h3 class="text-xl font-bold text-gray-800">Plano Premium</h3>
+                <p class="text-gray-500 mt-1">Solução completa e robusta</p>
+                <p class="text-4xl font-extrabold text-gray-900 my-6">R$ 49.90</p>
+                <ul class="space-y-3 text-gray-600 mb-8 flex-grow">
+                   <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Tudo do plano Profissional</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Múltiplas Páginas</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Blog integrado</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Otimização SEO Avançada</li>
+                </ul>
+                <button data-plan-name="Premium" class="select-plan-btn w-full mt-auto bg-white border-2 border-blue-600 text-blue-600 font-bold py-3 px-6 rounded-lg transition duration-300 hover:bg-blue-600 hover:text-white">Selecionar Plano</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão de Ação (CTA) -->
+    <div class="text-center my-12">
+      <a id="whatsapp-cta" class="inline-block bg-green-500 text-white font-bold text-xl py-4 px-10 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300" 
+         href="#" 
+         target="_blank">
+        <span class="flex items-center justify-center space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.447-4.433-9.886-9.888-9.886-5.448 0-9.886 4.434-9.889 9.885-.002 2.024.604 3.965 1.742 5.622l-1.06 3.886 3.849-1.055z"/></svg>
+          <span>Fale comigo no WhatsApp</span>
+        </span>
+      </a>
     </div>
 
-    <a class="whatsapp" href="https://wa.me/SEUNUMERO?text=Olá,%20tenho%20interesse%20em%20criar%20uma%20página%20para%20meu%20negócio!" target="_blank">
-      💬 Fale comigo no WhatsApp
-    </a>
-  </section>
+  </main>
 
-  <footer>
-    © 2025 — TTMARCIOKKJJ. Todos os direitos reservados.
+  <!-- Rodapé -->
+  <footer class="text-center py-8 px-4">
+    <p class="text-sm text-gray-500">© 2025 — Sua Empresa. Todos os direitos reservados.</p>
   </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Elementos do DOM
+        const planButtons = document.querySelectorAll('.select-plan-btn');
+        const planCards = document.querySelectorAll('.plan-card');
+        const whatsappCTA = document.getElementById('whatsapp-cta');
+        
+        // Configurações
+        const phoneNumber = '5584991289821';
+        const baseWhatsappUrl = 'https://wa.me/';
+        let selectedPlanName = 'Profissional'; // Plano padrão
+
+        // Função para atualizar o estado dos botões e cards
+        function updateSelection(selectedButton) {
+            // Atualiza o nome do plano selecionado
+            selectedPlanName = selectedButton.dataset.planName;
+
+            // Remove a seleção de todos os cards
+            planCards.forEach(card => {
+                card.classList.remove('ring-2', 'ring-blue-600', 'ring-offset-2');
+            });
+            
+            // Adiciona a seleção ao card pai do botão clicado
+            const selectedCard = selectedButton.closest('.plan-card');
+            if (selectedCard) {
+                selectedCard.classList.add('ring-2', 'ring-blue-600', 'ring-offset-2');
+            }
+            
+            // Atualiza o link do WhatsApp
+            updateWhatsappLink();
+        }
+
+        // Função para atualizar o link do CTA do WhatsApp
+        function updateWhatsappLink() {
+            const message = `Olá! Tenho interesse no ${selectedPlanName} e gostaria de mais informações.`;
+            const encodedMessage = encodeURIComponent(message);
+            whatsappCTA.href = `${baseWhatsappUrl}${phoneNumber}?text=${encodedMessage}`;
+        }
+
+        // Adiciona o evento de clique para cada botão de plano
+        planButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                updateSelection(button);
+            });
+        });
+
+        // Inicializa o estado com o plano padrão (Profissional)
+        const defaultButton = document.querySelector(`button[data-plan-name="${selectedPlanName}"]`);
+        if (defaultButton) {
+            updateSelection(defaultButton);
+        } else {
+             // Se o plano padrão não for encontrado, atualiza o link com uma mensagem genérica
+            const genericMessage = `Olá! Tenho interesse em criar uma página para meu negócio!`;
+            const encodedGenericMessage = encodeURIComponent(genericMessage);
+            whatsappCTA.href = `${baseWhatsappUrl}${phoneNumber}?text=${encodedGenericMessage}`;
+        }
+    });
+  </script>
 
 </body>
 </html>
