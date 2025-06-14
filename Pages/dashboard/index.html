@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine Digital - Encontre os Melhores Sabores</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: 'class' }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (Emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏙️</text></svg>">
+
+    <style>
+        :root { --primary: #d4af37; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        h1, h2, h3, .font-display { font-family: 'Playfair Display', serif; }
+        .restaurant-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .restaurant-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .dark .restaurant-card:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-200">
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+            <h1 class="text-5xl sm:text-6xl text-gray-900 dark:text-white font-display">Vitrine Digital</h1>
+            <p class="mt-3 text-lg text-gray-500 dark:text-gray-400">Descubra os melhores sabores da cidade.</p>
+        </div>
+        <!-- Botão de Tema -->
+        <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+            <svg id="theme-icon-light" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            <svg id="theme-icon-dark" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+        </button>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Barra de Busca -->
+        <div class="mb-12">
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+                </span>
+                <input type="search" id="search-input" class="w-full py-3 pl-10 pr-4 text-gray-900 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Buscar por nome ou tipo de cozinha...">
+            </div>
+        </div>
+
+        <!-- Lista de Restaurantes -->
+        <section>
+            <h2 class="text-3xl font-display text-gray-800 dark:text-gray-100 mb-6">Estabelecimentos</h2>
+            <div id="restaurant-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Restaurantes serão inseridos aqui -->
+            </div>
+        </section>
+    </main>
+    
+    <footer class="text-center py-10 mt-12 border-t border-gray-200 dark:border-gray-800">
+        <p class="text-gray-500 dark:text-gray-400">&copy; 2025 Vitrine Digital. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const platformConfig = {
+            restaurants: [
+                { id: 1, name: 'Gourmet Express', cuisine: 'Contemporânea', image: 'https://placehold.co/600x400/1f2937/e5e7eb?text=Gourmet', url: 'loja-design-elegante.html', openingHours: { 0: { open: '18:00', close: '22:00' }, 1: null, 2: { open: '18:00', close: '23:00' }, 3: { open: '18:00', close: '23:00' }, 4: { open: '18:00', close: '02:59' }, 5: { open: '18:00', close: '02:59' }, 6: { open: '18:00', close: '02:59' } } },
+                { id: 2, name: 'Sabor do Sertão', cuisine: 'Regional', image: 'https://placehold.co/600x400/b45309/ffffff?text=Sertão', url: '#', openingHours: { 0: { open: '11:00', close: '15:00' }, 1: null, 2: null, 3: { open: '11:00', close: '15:00' }, 4: { open: '11:00', close: '15:00' }, 5: { open: '11:00', close: '16:00' }, 6: { open: '11:00', close: '16:00' } } },
+                { id: 3, name: 'La Dolce Vita', cuisine: 'Italiana', image: 'https://placehold.co/600x400/16a34a/ffffff?text=Italiana', url: '#', openingHours: { 0: null, 1: { open: '19:00', close: '23:00' }, 2: { open: '19:00', close: '23:00' }, 3: { open: '19:00', close: '23:00' }, 4: { open: '19:00', close: '23:00' }, 5: { open: '19:00', close: '23:30' }, 6: { open: '19:00', close: '23:30' } } },
+                { id: 4, name: 'Sushi Zen', cuisine: 'Japonesa', image: 'https://placehold.co/600x400/dc2626/ffffff?text=Sushi', url: '#', openingHours: { 0: null, 1: null, 2: { open: '18:30', close: '22:30' }, 3: { open: '18:30', close: '22:30' }, 4: { open: '18:30', close: '22:30' }, 5: { open: '18:30', close: '23:00' }, 6: { open: '18:30', close: '23:00' } } },
+                { id: 5, name: 'Parrilla Del Fuego', cuisine: 'Churrascaria', image: 'https://placehold.co/600x400/78350f/ffffff?text=Parrilla', url: '#', openingHours: { 0: { open: '12:00', close: '16:00' }, 1: null, 2: { open: '19:00', close: '23:00' }, 3: { open: '19:00', close: '23:00' }, 4: { open: '19:00', close: '23:00' }, 5: { open: '12:00', close: '23:59' }, 6: { open: '12:00', close: '23:59' } } },
+                { id: 6, name: 'Cantinho Vegano', cuisine: 'Vegana', image: 'https://placehold.co/600x400/22c55e/111827?text=Vegano', url: '#', openingHours: { 0: null, 1: { open: '11:30', close: '15:00' }, 2: { open: '11:30', close: '15:00' }, 3: { open: '11:30', close: '15:00' }, 4: { open: '11:30', close: '15:00' }, 5: { open: '11:30', close: '15:00' }, 6: null } },
+            ]
+        };
+
+        const htmlEl = document.documentElement;
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-icon-light');
+        const darkIcon = document.getElementById('theme-icon-dark');
+        const searchInput = document.getElementById('search-input');
+        const restaurantListEl = document.getElementById('restaurant-list');
+        
+        function updateThemeIcon() {
+            const isDarkMode = htmlEl.classList.contains('dark');
+            lightIcon.classList.toggle('hidden', !isDarkMode);
+            darkIcon.classList.toggle('hidden', isDarkMode);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            updateThemeIcon();
+        });
+        
+        function checkStoreStatus(openingHours) {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            const todayHours = openingHours[dayOfWeek];
+            
+            if (todayHours && currentTime >= todayHours.open && currentTime < todayHours.close) {
+                return { isOpen: true, text: 'Aberto', colorClasses: 'bg-green-100 text-green-800 dark:bg-green-500/10 dark:text-green-400' };
+            }
+            return { isOpen: false, text: 'Fechado', colorClasses: 'bg-red-100 text-red-800 dark:bg-red-500/10 dark:text-red-400' };
+        }
+
+
+        function renderRestaurants(filter = '') {
+            restaurantListEl.innerHTML = '';
+            const lowerCaseFilter = filter.toLowerCase();
+
+            const filteredRestaurants = platformConfig.restaurants.filter(r => 
+                r.name.toLowerCase().includes(lowerCaseFilter) ||
+                r.cuisine.toLowerCase().includes(lowerCaseFilter)
+            );
+
+            const processedRestaurants = filteredRestaurants.map(r => ({
+                ...r,
+                status: checkStoreStatus(r.openingHours)
+            })).sort((a, b) => b.status.isOpen - a.status.isOpen);
+
+
+            if (processedRestaurants.length === 0) {
+                restaurantListEl.innerHTML = `<p class="col-span-full text-center text-gray-500 dark:text-gray-400 py-10">Nenhum restaurante encontrado.</p>`;
+                return;
+            }
+
+            processedRestaurants.forEach(resto => {
+                const statusBadge = `
+                    <div class="absolute top-4 left-4 px-2 py-1 text-xs font-bold rounded-full flex items-center gap-1.5 ${resto.status.colorClasses}">
+                        <span class="h-2 w-2 rounded-full ${resto.status.isOpen ? 'bg-green-500' : 'bg-red-500'}"></span>
+                        <span>${resto.status.text}</span>
+                    </div>
+                `;
+
+                const card = `
+                    <div class="bg-white dark:bg-gray-800/50 rounded-lg shadow-md overflow-hidden restaurant-card border border-gray-200 dark:border-gray-700/50 relative">
+                        <img src="${resto.image}" alt="${resto.name}" class="w-full h-48 object-cover ${!resto.status.isOpen ? 'grayscale' : ''}">
+                        ${statusBadge}
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-primary uppercase tracking-wider">${resto.cuisine}</p>
+                            <h3 class="text-2xl font-display mt-2 text-gray-900 dark:text-white">${resto.name}</h3>
+                            <a href="${resto.url}" class="inline-block mt-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold py-2 px-5 rounded-lg transition hover:bg-black dark:hover:bg-gray-200">
+                                Ver Cardápio
+                            </a>
+                        </div>
+                    </div>
+                `;
+                restaurantListEl.innerHTML += card;
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            renderRestaurants(e.target.value);
+        });
+
+        // Inicialização
+        updateThemeIcon();
+        renderRestaurants();
+    });
+    </script>
+</body>
+</html>
